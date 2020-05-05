@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const BootcampScheme = new mongoose.Schema({
+const BootcampSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, 'Please add name'],
@@ -36,31 +36,31 @@ const BootcampScheme = new mongoose.Schema({
     type: String,
     required: [true, 'Please add an address'],
   },
-  location: {
-    //GeoJSON Point
-    type: {
-      type: String,
-      enum: ['Point'],
-      required: true,
-    },
-    coordinates: {
-      type: [Number],
-      required: true,
-      index: '2dsphere',
-    },
-    formattedAddress: String,
-    street: String,
-    city: String,
-    state: String,
-    zipcode: String,
-    country: String,
-  },
+  // location: {
+  //   //GeoJSON Point
+  //   type: {
+  //     type: String,
+  //     enum: ['Point'],
+  //     required: true,
+  //   },
+  //   coordinates: {
+  //     type: [Number],
+  //     required: true,
+  //     index: '2dsphere',
+  //   },
+  //   formattedAddress: String,
+  //   street: String,
+  //   city: String,
+  //   state: String,
+  //   zipcode: String,
+  //   country: String,
+  // },
   careers: {
     type: [String],
     required: true,
     enum: [
       'Web Development',
-      'Modbile Development',
+      'Mobile Development',
       'UI/UX',
       'Data Science',
       'Business',
@@ -99,4 +99,4 @@ const BootcampScheme = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('Bootcamp', BootcampScheme);
+module.exports = mongoose.model('Bootcamp', BootcampSchema);

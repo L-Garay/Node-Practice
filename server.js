@@ -12,6 +12,9 @@ dotenv.config({ path: './config/config.env' });
 //Initial server setup
 const app = express();
 
+//Body parser
+app.use(express.json());
+
 //Connect to the database
 connectDB();
 
