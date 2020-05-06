@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const logger = require('./middleware/logger');
+const errorHandler = require('./middleware/error');
 const morgan = require('morgan');
 const connectDB = require('./config/dbConfig');
 //tool that allows to color/style your console.log messages -- optional
@@ -26,9 +27,12 @@ app.use('/api/v1/bootcamps', bootcamps);
 
 //Middleware methods
 
-//custom middleware
+//error middleware
+app.use(errorHandler);
+
+//custom logging middleware
 app.use(logger);
-//third party middleware -- only running if environment is 'development'
+//third party logging middleware -- only running if environment is 'development'
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
